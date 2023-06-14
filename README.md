@@ -1,6 +1,4 @@
-# expense_tracker
-
-A new Flutter project.
+# Expenser - The Personal Expense Tracker
 
 ## Getting Started
 
