@@ -17,7 +17,12 @@ class _Expense extends State<Expense>{
         title: Text('Expense Tracker'),
       ),
       body: const Center(
-        child: Text('Expense Tracker'),
+        child: Column(
+          children: [
+            Text('The Chart'),
+            Text('The List')
+          ],
+        ),
       ),
     );
   }
