@@ -1,3 +1,4 @@
+import 'package:expense_tracker/widgets/expenses/expense_list.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/models/expense.dart';
 
@@ -26,13 +27,41 @@ class _Expenses extends State<Expenses>{
     )
   ];
 
+  // Function to remove expenses
+  void _removeExpense(Expense expense) {
+    final expenseIndex = _expenseList.indexOf(expense);
+    setState(() {
+      _expenseList.remove(expenseIndex);
+    });
+
+    // Confirmation / Warning Scaffold
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 5),
+        content: const Text('The Expense has been Deleted'),
+        action: SnackBarAction(
+          label: 'Undo', 
+          onPressed: () {
+            setState(() {
+              _expenseList.insert(expenseIndex, expense);
+            });
+          }
+        ),
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget mainContent = const Center(
       child: Text('You do not have any expenses. Add some.'),
     );
     if(_expenseList.isNotEmpty){
-      
+      mainContent = ExpenseList(
+        expenseList: _expenseList, 
+        onRemoveExpense: _removeExpense
+      );
     }
     return Scaffold(
       appBar: AppBar(
