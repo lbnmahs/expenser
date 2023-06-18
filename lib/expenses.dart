@@ -28,7 +28,12 @@ class _Expenses extends State<Expenses>{
 
   @override
   Widget build(BuildContext context) {
-    
+    Widget mainContent = const Center(
+      child: Text('You do not have any expenses. Add some.'),
+    );
+    if(_expenseList.isNotEmpty){
+      
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expense Tracker'),
@@ -39,11 +44,11 @@ class _Expenses extends State<Expenses>{
           )
         ],
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           children: [
-            Text('The Chart'),
-            Text('The List')
+            const Text('The Chart'),
+            mainContent
           ],
         ),
       ),
