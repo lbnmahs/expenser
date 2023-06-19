@@ -23,6 +23,17 @@ void main() {
             fontSize: 18,
             color: kDarkColorScheme.onSecondaryContainer
           ),
+          bodyLarge: TextStyle(
+            fontSize: 16,
+            color: kDarkColorScheme.onSecondaryContainer,
+            fontWeight: FontWeight.w600
+          )
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kDarkColorScheme.secondaryContainer,
+            foregroundColor: kDarkColorScheme.onSecondaryContainer
+          )
         )
       ),
 
@@ -30,6 +41,10 @@ void main() {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: kColorScheme,
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: kColorScheme.onPrimaryContainer,
+          foregroundColor: kColorScheme.primaryContainer
+        ),
         cardTheme: const CardTheme().copyWith(
           color: kColorScheme.secondaryContainer,
           margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 7)
@@ -40,6 +55,17 @@ void main() {
             fontSize: 18,
             color: kColorScheme.onSecondaryContainer
           ),
+          bodyLarge: TextStyle(
+            fontSize: 16,
+            color: kColorScheme.onSecondaryContainer,
+            fontWeight: FontWeight.w600
+          )
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kDarkColorScheme.secondaryContainer,
+            foregroundColor: kDarkColorScheme.onSecondaryContainer
+          )
         )
       ),
       home: const Expenses(),

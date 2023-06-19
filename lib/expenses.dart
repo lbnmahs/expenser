@@ -1,4 +1,5 @@
 import 'package:expense_tracker/widgets/expenses/expense_list.dart';
+import 'package:expense_tracker/widgets/expenses/new_expense.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/models/expense.dart';
 
@@ -27,6 +28,17 @@ class _Expenses extends State<Expenses>{
     )
   ];
 
+  void _showExpenseModal() {
+
+  }
+
+  // Function to add an expense
+  void _addExpense(Expense expense) {
+    setState(() {
+      _expenseList.add(expense);
+    });
+  }
+
   // Function to remove expenses
   void _removeExpense(Expense expense) {
     final expenseIndex = _expenseList.indexOf(expense);
@@ -34,7 +46,7 @@ class _Expenses extends State<Expenses>{
       _expenseList.remove(expenseIndex);
     });
 
-    // Confirmation / Warning Scaffold
+    // confirmation scaffold
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -59,7 +71,7 @@ class _Expenses extends State<Expenses>{
     );
     if(_expenseList.isNotEmpty){
       mainContent = ExpenseList(
-        expenseList: _expenseList, 
+        expenses: _expenseList, 
         onRemoveExpense: _removeExpense
       );
     }
@@ -77,7 +89,7 @@ class _Expenses extends State<Expenses>{
         child: Column(
           children: [
             const Text('The Chart'),
-            mainContent
+            Expanded(child: mainContent),
           ],
         ),
       ),
