@@ -76,7 +76,7 @@ class _NewExpense extends State<NewExpense> {
     final enteredAmount = double.tryParse(_amountController.text);
     final isAmountInvalid = enteredAmount == null || enteredAmount <= 0;
 
-    if(_textController.text.isEmpty || isAmountInvalid || _selectedDate == null){
+    if(_textController.text.trim().isEmpty || isAmountInvalid || _selectedDate == null){
       _showDialog();
       return;
     }
@@ -128,8 +128,12 @@ class _NewExpense extends State<NewExpense> {
                       Expanded(
                         child: TextField(
                           controller: _amountController,
+                          keyboardType: TextInputType.number,
                           maxLength: 10,
-                          decoration: const InputDecoration(label: Text('Amount'))
+                          decoration: const InputDecoration(
+                            prefixText: 'Ksh',
+                            label: Text('Amount')
+                          )
                         ),
                       ),
                     ],
@@ -150,6 +154,7 @@ class _NewExpense extends State<NewExpense> {
                         value: _selectedCategory,
                         items: Category.values.map(
                           (category) => DropdownMenuItem(
+                            value: category,
                             child: Text(category.name)
                           )
                         ).toList(), 
@@ -184,8 +189,12 @@ class _NewExpense extends State<NewExpense> {
                       Expanded(
                         child: TextField(
                           controller: _amountController,
+                          keyboardType: TextInputType.number,
                           maxLength: 10,
-                          decoration: const InputDecoration(label: Text('Amount'))
+                          decoration: const InputDecoration(
+                            prefixText: 'Ksh',
+                            label: Text('Amount')
+                          )
                         ),
                       ),
                       const SizedBox(width: 10,),
@@ -230,6 +239,7 @@ class _NewExpense extends State<NewExpense> {
                         value: _selectedCategory,
                         items: Category.values.map(
                           (category) => DropdownMenuItem(
+                            value: category,
                             child: Text(category.name)
                           )
                         ).toList(),

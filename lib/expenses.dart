@@ -29,7 +29,12 @@ class _Expenses extends State<Expenses>{
   ];
 
   void _showExpenseModal() {
-
+    showModalBottomSheet(
+      useSafeArea: true,
+      isScrollControlled: true,
+      context: context, 
+      builder: (ctx) => NewExpense(onAddExpense: _addExpense)
+    );
   }
 
   // Function to add an expense
@@ -43,7 +48,7 @@ class _Expenses extends State<Expenses>{
   void _removeExpense(Expense expense) {
     final expenseIndex = _expenseList.indexOf(expense);
     setState(() {
-      _expenseList.remove(expenseIndex);
+      _expenseList.remove(expense);
     });
 
     // confirmation scaffold
@@ -69,6 +74,8 @@ class _Expenses extends State<Expenses>{
     Widget mainContent = const Center(
       child: Text('You do not have any expenses. Add some.'),
     );
+    final width = MediaQuery.of(context).size.width;
+
     if(_expenseList.isNotEmpty){
       mainContent = ExpenseList(
         expenses: _expenseList, 
@@ -80,13 +87,21 @@ class _Expenses extends State<Expenses>{
         title: const Text('Expense Tracker'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: _showExpenseModal,
             icon: const Icon(Icons.add),
           )
         ],
       ),
       body: Center(
-        child: Column(
+        child: width > 600
+        ? Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('The Chart'),
+            Expanded(child: mainContent)
+          ],
+        )
+        : Column(
           children: [
             const Text('The Chart'),
             Expanded(child: mainContent),
