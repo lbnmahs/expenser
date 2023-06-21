@@ -63,8 +63,8 @@ void main() {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: kDarkColorScheme.secondaryContainer,
-            foregroundColor: kDarkColorScheme.onSecondaryContainer
+            backgroundColor: kColorScheme.secondaryContainer,
+            foregroundColor: kColorScheme.onSecondaryContainer
           )
         )
       ),

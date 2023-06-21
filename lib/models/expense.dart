@@ -33,3 +33,28 @@ class Expense {
     return formatter.format(date);
   }
 }
+
+class ExpenseBar {
+  const ExpenseBar({
+    required this.expenses, 
+    required this.category
+  });
+
+  final List<Expense> expenses;
+  final Category category;
+
+  ExpenseBar.forCategory(
+    this.category,
+    List<Expense> allExpenses
+  ) : expenses = allExpenses.where(
+    (expense) => category == expense.category
+  ).toList();
+
+  double get totalAmount {
+    double sum = 0;
+    for(final expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
+  }
+}
