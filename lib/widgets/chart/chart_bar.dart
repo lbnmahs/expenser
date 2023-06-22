@@ -11,7 +11,7 @@ class ChartBar extends StatelessWidget {
 
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: FractionallySizedBox(
           heightFactor: fill,
           child: DecoratedBox(
