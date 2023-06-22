@@ -35,6 +35,7 @@ class Chart extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         gradient: LinearGradient(
@@ -42,8 +43,8 @@ class Chart extends StatelessWidget {
             Theme.of(context).colorScheme.primary.withOpacity(0.5),
             Theme.of(context).colorScheme.primary.withOpacity(0.1)
           ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter
         )
       ),
       child: Column(

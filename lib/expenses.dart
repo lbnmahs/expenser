@@ -98,13 +98,13 @@ class _Expenses extends State<Expenses>{
         ? Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Chart(expenses: _expenseList),
+            Expanded(child: Chart(expenses: _expenseList)),
             Expanded(child: mainContent)
           ],
         )
         : Column(
           children: [
-            Expanded(child: Chart(expenses: _expenseList)),
+            Chart(expenses: _expenseList),
             Expanded(child: mainContent),
           ],
         ),
